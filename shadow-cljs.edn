@@ -8,6 +8,9 @@
 
  :dependencies [[check "0.2.2-SNAPSHOT"]
 
+                ;; flowstorm
+                [com.github.flow-storm/flow-storm-inst "4.0.2"]
+
                 ;; Tango dependencies
                 [reagent "1.2.0"]
                 [org.babashka/sci "0.8.40"]
@@ -15,6 +18,8 @@
 
                 ;; Debug
                 ; [com.wsscode/pathom-viz-connector "RELEASE"]]
+
+ :nrepl {:port 9000}
 
  :builds
  {:dev {:target :node-library
@@ -52,7 +57,9 @@
 
         :output-dir "lib/js"
         :output-to "lib/cmds.js"
-        :devtools {:preloads []}}
+        ;; flowstorm
+        :devtools {:preloads [flow-storm.preload]}
+  }
 
   :tests {:target :node-script
           :main lazuli.core-test/run-tests

@@ -42,5 +42,8 @@
     "utf-8-validate": "^5.0.2",
     "web-tree-sitter": "^0.20.8",
     "ws": "^7.1.2"
+  },
+  "dependencies": {
+    "websocket": "^1.0.35"
   }
 }
