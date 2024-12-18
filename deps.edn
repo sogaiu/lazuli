@@ -1,0 +1,27 @@
+{:paths ["src" "test"
+         ; "repl-tooling/src" "repl-tooling/test"
+         ; "repl-tooling/orbit/src" "repl-tooling/orbit/test"
+         "tango/src"
+         "saphire/src"
+         "sci.configs/src"
+         "repl-tooling/resources"]
+
+ :deps {check/check {:mvn/version "0.2.2-SNAPSHOT"}
+        ;; Tango dependencies
+        reagent/reagent {:mvn/version "1.2.0"}
+        org.babashka/sci {:mvn/version "0.8.40"}
+        link.szabo.mauricio/duck-repled {:mvn/version "2024-11-21.02.25"}
+        ;; Debug
+        ; com.wsscode/pathom-viz-connector {:mvn/version "RELEASE"}
+       }
+
+ :aliases {:cljs-storm {:classpath-overrides {org.clojure/clojurescript nil}
+                        :extra-deps {thheller/shadow-cljs {:mvn/version "2.28.20"
+                                                           :exclusions [org.clojure/clojurescript]}
+                                     com.github.flow-storm/clojurescript {:mvn/version "1.11.132-8"}
+                                     com.github.flow-storm/flow-storm-inst {:mvn/version "4.0.2"}}
+                        :jvm-opts
+                        ["-Dcljs.storm.instrumentOnlyPrefixes=com.wsscode.pathom3,duck-repled,lazuli,orbit,promesa,saphire,tango"
+                         "-Dcljs.storm.instrumentEnable=true"
+                         "-Dflowstorm.startRecording=false"]}}
+}
